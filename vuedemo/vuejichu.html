@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<todo-input lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vueBindEvent</title>
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<div id="demo">
+		<!-- <p>{{message}}</p>
+		<button @click="reverseMessage">转换message</button>
+		<input type="text"  v-model="message"> -->
+		<todo-input :meg="item" v-for="item in items" :key="item.id"></todo-input>
+	</div>
+	<script>
+		Vue.component('todo-input',{
+			props: ['meg'],
+			template: `
+				<div>
+					<p>{{meg.id}}</p>
+					<p>{{meg.title}}</p>
+					<input type="button" value="改变自己">
+				</div>
+			`
+		})
+		var vm = new Vue({
+			el: '#demo',
+			// data: {message: 'the japan all stupid'},
+			data: {
+				items :[
+					{id:1,title:'too aodaliya'},
+					{id:2,title:'too usa'},
+					{id:3,title:'too england'}
+				]
+			},
+			methods: {
+				reverseMessage:function(){
+					this.message = this.message.split('').reverse().join('');
+				}
+			}
+		})
+	</script>
+</body>
+</html>

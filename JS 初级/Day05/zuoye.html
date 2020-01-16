@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function shuzu(){
+				var arr=[12,15,78,95,84,63];
+				console.log("排序前:"+arr);
+				arr.sort(function(a,b){
+          return b-a;
+        });
+        console.log("排序后:"+arr);
+      }
+			
+
+
+		function shuzu2(){
+			var arr2=[12,15,78,95,84,63];
+			console.log("排序前:"+arr2);
+			function sortAsc(a,b){
+        return a-b;
+      }
+			arr2.sort(sortAsc);
+			console.log("排序后:"+arr2);
+
+		}
+			
+		</script>
+		<button onclick="shuzu()">降序按钮</button>
+		<button onclick="shuzu2()">升序按钮</button>
+	</body>
+</html>

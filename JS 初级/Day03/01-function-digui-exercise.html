@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>菲波那切数列-递归</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 求 第n个数字的值是多少
+       * 边界条件：n为1 或 n为2 的时候，返回1
+       */
+      function f(n){
+        if(n==1 || n==2){
+          return 1;
+        }else{
+          return f(n-1)+f(n-2);
+        }
+      }
+
+      function testF(){
+        var result = f(30);
+        console.log(result);
+      }
+    </script>
+    <button onclick="testF()">菲波那切数列</button>
+  </body>
+</html>

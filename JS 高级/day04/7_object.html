@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //学生姓名:Li Lei
+      //学生年龄:11
+      //自我介绍:功能{ "I'm Li Lei, I'm 11" }
+      var lilei={
+        sname:"Li Lei",
+        sage:11,
+        intr(){
+          console.log(
+            "I'm "+this.sname+
+            ", I'm "+this.sage);
+        }
+      };
+      console.dir(lilei);
+      console.log(lilei.sage);
+      lilei.intr();
+      lilei.sage++;
+      console.log(lilei.sage);
+      lilei.intr();
+      lilei.sname="Li Xiaolei";
+      lilei.intr();
+      var hmm=new Object();
+      hmm.sname="Han Meimei";
+      //["sname"]
+      hmm["sage"]=12;
+        //.sage
+      console.dir(hmm);
+    </script>
+  </body>
+</html>

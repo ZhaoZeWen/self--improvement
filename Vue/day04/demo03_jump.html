@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <router-view></router-view>
+</div>
+
+<script>
+    var MyPerson = Vue.component('my-person',{
+        methods:{
+            handleClick:function(){
+                //通过js的方式来实现跳转
+                this.$router.push('/settings');
+            }
+        },
+        template:`
+            <div>
+                <h1>这是个人中心页面</h1>
+                <button @click="handleClick">设置</button>
+            </div>
+        `
+    })
+
+    var MySettings = Vue.component('my-settings',{
+        template:`
+            <div>
+                <h2>这是设置页面</h2>
+                <router-link to="/person">
+                    查看个人中心
+                </router-link>
+            </div>
+        `
+    })
+
+    const myRoutes = [
+        {path:'',component:MyPerson},
+        {path:'/person',component:MyPerson},
+        {path:'/settings',component:MySettings}
+    ]
+
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    });
+
+    new Vue({
+        router:myRouter,
+        el: '#example',
+        data: {
+            msg: 'Hello World'
+        }
+    });
+</script>
+
+</body>
+</html>

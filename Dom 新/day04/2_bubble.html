@@ -1,0 +1,28 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>事件处理</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/2.css"/>
+		
+	</head>
+	<body>
+		<div id="d1">
+			<div id="d2">
+				<div id="d3">
+				</div>
+			</div>
+		</div>
+    <script>
+			function sayHi(e){
+				alert("我是"+this.id);
+				e.stopPropagation();
+			}
+			d1.onclick=sayHi;
+			 //d1.onclick(e)
+			      //sayHi(e)
+			d2.onclick=sayHi;
+			d3.onclick=sayHi;
+		</script>
+	</body>
+</html>

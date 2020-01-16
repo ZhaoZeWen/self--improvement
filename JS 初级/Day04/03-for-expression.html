@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 省略 for 的表达式
+       */
+      function fun1(){
+        var i=1;
+        for(;;){
+          console.log(i);
+          if(i >= 100){
+            break;
+          }
+          i++;
+        }
+      }
+
+      function calSum(){
+        for(var i=1,sum=0;i<=100;i++){
+          sum += i;
+        }
+        console.log(sum);
+      }
+    </script>
+    <button onclick="fun1()">for循环</button>
+    <button onclick="calSum()">计算和</button>
+  </body>
+</html>

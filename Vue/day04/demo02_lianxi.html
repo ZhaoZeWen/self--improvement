@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <!--指定盛放组件的容器-->
+    <router-view></router-view>
+</div>
+
+<script>
+    var MyLogin = Vue.component('my-login',{
+        template:`
+           <h1>这是登录页面</h1>
+        `
+    })
+
+    var MyMain = Vue.component('my-main',{
+        template:`
+            <h1>这是主页面</h1>
+        `
+    })
+
+    //配置路由数组
+    const myRoutes = [
+        {path:'',component:MyLogin},
+        {path:'/login',component:MyLogin},
+        {path:'/main',component:MyMain}
+    ];
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    })
+
+    new Vue({
+        router:myRouter,
+        el: '#example',
+        data: {
+            msg: 'Hello World'
+        }
+    });
+</script>
+
+</body>
+</html>

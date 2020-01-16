@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>窗口右下角消息弹出框</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="css/8.css"/>
+  
+ </head>
+ <body>
+  <div id="msg">
+	  <a href="javascript:down()">X</a>
+  </div>
+  <script>
+		window.onload=function(){
+			msg.style.bottom=0;
+		}
+		function down(){
+			msg.style.bottom=-200+"px";
+			//等三秒后自动上浮!
+		}
+		
+  </script>
+ </body>
+</html>

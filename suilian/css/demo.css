@@ -1,0 +1,24 @@
+* {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-size: 20px; 
+	color: royalblue;
+}
+* {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	vertical-align: baseline;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+html,body { 
+    color:#000; 
+    background:#fff; 
+    font:12px/22px Verdana,Arial,sans-serif,"Times New Roman",思源宋体; 
+    width:100%;
+    overflow: hidden;
+}

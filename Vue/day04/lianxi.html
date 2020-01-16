@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <div id="example">
+        <to-do-box></to-do-box>
+    </div>
+
+    <script>
+        var bus = new Vue();
+        //todoitem
+        Vue.component('to-do-item',{
+            props:['myValue','myIndex'],
+            methods:{
+                handleClick:function(){
+                    //触发事件
+                    this.$emit('deleteEvent',this.myIndex);
+                }
+            },
+            template:`
+                <li>
+                    <button @click="handleClick">delete</button>
+                    <span>{{myValue}}</span>
+                </li>
+            `
+        });
+
+        //todolist
+        Vue.component('to-do-list',{
+            data:function(){
+                return {
+                    list:[]
+                }
+            },
+            beforeCreate:function(){
+                //绑定事件和处理函数
+                bus.$on('addEvent',(msg)=>{
+                    console.log('todolist接受到todoinput传来的数据是'+msg);
+                    this.list.push(msg)
+                });
+            },
+            methods:{
+                handleDelete:function(msg){
+                    //希望子组件在触发deleteEvent事件时，
+                    //能够将要删除的元素的下标传递过来
+                    console.log('要删除第'+msg+"个");
+                    this.list.splice(msg,1);
+                }
+            },
+            template:`
+                <ul>
+                    <to-do-item
+                     @deleteEvent="handleDelete"
+                    :myValue="tmp"
+                    :myIndex="index"
+                    :key="index"
+                     v-for="(tmp,index) in list"></to-do-item>
+                </ul>
+            `
+        })
+
+        //todoinput
+        Vue.component('to-do-input',{
+            data:function(){
+                return {
+                    myInput:''
+                }
+            },
+            methods:{
+                addToList:function(){
+                    bus.$emit('addEvent',this.myInput);
+                    this.myInput = "";
+                }
+            },
+            template:`
+                <div>
+                    <h3>待做事项列表</h3>
+                    <input
+                    type="text"
+                    v-model="myInput"
+                    placeholder="请输入要做的事情"/>
+                    <button @click="addToList">add</button>
+                </div>
+            `
+        })
+        Vue.component('to-do-box',{
+            template:`
+                <div>
+                    <to-do-input></to-do-input>
+                    <to-do-list></to-do-list>
+                </div>
+            `
+        })
+
+        new Vue({
+            el:"#example"
+        })
+    </script>
+
+
+</body>
+</html>

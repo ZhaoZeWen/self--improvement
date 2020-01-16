@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function hm1(){
+        //1、循环外声明一个数组 names
+        /*
+          2、循环录入数据 
+            条件 : 不确定循环次数(while / do...while)
+            操作 : 
+              1、从弹框中录入数据
+              2、判断是否为 exit
+              3、如果不是exit向数组中添加数据
+          
+        */
+        //3、循环外 : 打印names的数据(倒序)
+
+        var names = new Array();
+        do{
+          var input = prompt("输入员工姓名:");
+          if(input != "exit"){
+            //将input保存在names的最后面
+            names[names.length] = input;
+          }
+        }while(input != "exit");
+        //输出
+        //console.log(names);
+        //倒序输出
+        //原理：下标从length-1开始，到0结束，下标递减
+        for(var i=names.length-1;i>=0;i--){
+          console.log(names[i]);
+        }
+
+      }
+      /**找出一个数组的最大值*/
+      function hm2(){
+        //0 : 准备工作
+        var nums = [78,2,35,69,128,970,58];
+        //1、声明变量max，用于表示数组中的最大值，默认先将nums中的第一个元素赋值给max
+        var max = nums[0];
+        //2、从数组中的第2个元素开始，依次与max进行比较，数值比max大的，则赋值给max
+        for(var i=1;i<nums.length;i++){
+          if(nums[i] > max){
+            max = nums[i];
+          }
+        }
+        console.log("最大值:"+max);
+
+      }
+      
+      /**查找信息在指定数组中的下标*/
+      function hm3(){
+        //0.声明一个数组并赋值
+        var names = ["大乔","小乔","周瑜","安其拉","鲁班七号","亚瑟","梦奇","安其拉"];
+        console.log(names);
+        //1.从弹框中输入姓名并保存在 input 中 
+        var input = prompt("输入一个姓名:");
+        //2.循环遍历 names 数组，并且判断是否与其中的元素相等
+        //3.循环外：声明一个变量 index，并设置其默认值为负数,作用，是为了保存查找到的元素的下标
+        var index = -1;
+        for(var i=0;i<names.length;i++){
+          if(names[i] == input){
+            index = i;//input 和 数组中的元素相等了，将该元素的下标 i ，赋值给 index
+            break;
+          }
+        }
+        //4.根据index的值给出提示，如果index依然为负数的话，则没找到指定的元素。否则(index一定是大于等于0的数)，就说明index中存放的就是要查找元素的下标
+        if(index < 0){
+          console.log("对不起，没查找到您的数据!");
+        }else{
+          console.log("下标为:"+index);
+        }
+      }
+
+      function hm4(){
+        //0.声明一个数组并赋值
+        var names = ["大乔","小乔","周瑜","安其拉","鲁班七号","亚瑟","梦奇","安其拉"];
+        console.log(names);
+        //1.从弹框中输入姓名并保存在 input 中 
+        var input = prompt("输入一个姓名:");
+        //2.声明一个空数组：用于保存出现过的元素的下标
+        var indexes = [];
+        //3.循环遍历 names 数组，将每个元素与input比较，如果相等，则将下标保存进 indexes 数组中即可
+        for(var i=0;i<names.length;i++){
+          if(input == names[i]){
+            //将 i 保存进 indexes 数组
+            indexes[indexes.length] = i;
+          }
+        }
+        //4.根据 indexes 的length来判断是否查找到了指定的元素，如果length 为 0，则没找到指定元素，否则打印输出所有的下标(indexes的元素)
+        if(indexes.length == 0){
+          console.log("对不起，没找到您要的元素!");
+        }else{
+          console.log(indexes);
+        }
+      }
+    </script>
+    <button onclick="hm1()">录入员工姓名</button>
+    <button onclick="hm2()">查找数组最大值</button>
+    <button onclick="hm3()">查找元素</button>
+    <button onclick="hm4()">查找元素(多元素)</button>
+  </body>
+</html>

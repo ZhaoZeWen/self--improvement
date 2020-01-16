@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vueRoad</title>
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<div id="el">
+		<!-- <ol>
+			<todo-item
+				v-for = 'index in items'
+				v-bind:todo = 'index'
+				v-bind:key = 'index.id'>
+			</todo-item>
+			<index-item
+				v-for = 'item in ites'
+				v-bind:index = 'item'
+				v-bind:key = 'item.id'>
+			
+			</index-item>
+		</ol> -->
+		<p>{{message}}</p>
+		<button v-on:click="reverseMessage">翻转message</button>
+	</div>
+
+	<script>
+		Vue.component('todo-item',{
+			// todo-item 组件现在接受一个
+			// "prop"，类似于一个自定义特性。
+			// 这个 prop 名为 todo。
+			props: ['todo'],
+			template: '<li>{{todo.text}}</li>'
+		})
+		Vue.component('index-item',{
+			props: ['index'],
+			template: '<li>{{index.tet}}</li>'
+		})
+		var vm = new Vue({
+			el: '#el',
+			data: {
+				items : [
+					{id: 0, text: 'banana'},
+					{id: 1, text: 'apple'},
+					{id: 2, text: 'watermelon'}
+				],
+				ites : [
+					{id: 4, tet: 'banana'},
+					{id: 5, tet: 'apple'},
+					{id: 6, tet: 'watermelon'}
+				]
+			},
+			data:	{message: 'the  japan all stupid'},
+			methods :{
+				reverseMessage:function(){
+					this.message = this.message.split('').reverse().join('');
+				}
+			},
+		})
+	</script>
+</body>
+</html>

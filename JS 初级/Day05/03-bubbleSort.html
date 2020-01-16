@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>冒泡排序</title>
+  </head>
+  <body>
+    <script>
+      var arr = [23,9,78,6,45];
+      console.log("排序前:"+arr);
+      //控制比较轮数的循环
+      for(var i=1;i<arr.length;i++){
+        //控制比较次数的循环：随着轮数的增加，次数反而在减少
+        for(var j=0;j<arr.length-i;j++){
+          //如果第一个数字比第二个数字大的话，则交换两个数字的位置
+          if(arr[j] > arr[j+1]){
+            arr[j] ^= arr[j+1];
+            arr[j+1] ^= arr[j];
+            arr[j] ^= arr[j+1];
+          }
+        }
+      }
+      console.log("排序后:"+arr);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function testJoin(){
+        var arr = ["狄仁杰","李元芳","孙尚香","达摩"];
+        var str = arr.join(",");
+        console.log("连接后的字符串:"+str);
+      }
+
+      function printTriangle1(){
+        for(var i=1,arr=[];i<=5;i++,arr.length=0){
+          for(j=1;j<=i;j++){
+            arr[arr.length]="*";
+          }
+          console.log(arr.join(""));
+        }
+      }
+      /**
+          *
+         ***
+        *****
+       *******
+      *********
+      */
+
+      function printTriangle2(){
+        for(var i=1,arr=[];i<=5;i++,arr.length=0){
+          //内层循环：控制空格
+          for(var j=1;j<=5-i;j++){
+            arr[arr.length]=" ";
+          }
+          //内层循环：控制 **
+          for(var k=1;k<=2*i-1;k++){
+            arr[arr.length]="*";
+          }
+          //将arr的数据使用""连接起来并打印
+          console.log(arr.join(""));
+        }
+      }
+
+      function printNine(){
+        for(var i=1,arr=[];i<=9;i++,arr.length=0){
+          for(var j=1;j<=i;j++){
+            arr[arr.length]=j+"*"+i+"="+j*i;
+          }
+          console.log(arr.join("\t"));
+        }
+      }
+    </script>
+    <button onclick="testJoin()">join()</button>
+    <button onclick="printTriangle1()">三角形1</button>
+    <button onclick="printTriangle2()">三角形2</button>
+    <button onclick="printNine()">九九乘法表</button>
+  </body>
+</html>

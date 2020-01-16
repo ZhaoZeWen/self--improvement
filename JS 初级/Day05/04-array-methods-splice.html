@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var names = ["旋涡鸣人","佐助","春野樱","卡卡西"];
+      //1、在漩涡鸣人 和 佐助 之间增加一个元素 : 我爱罗
+      names.splice(1,0,"我爱罗");
+      console.log("增加后:"+names);
+      //["旋涡鸣人","我爱罗","佐助","春野樱","卡卡西"]
+      //2、删除春野樱 和 卡卡西，并将删除的元素打印在控制台上
+      var delNames = names.splice(3,2);
+      console.log("names:"+names);
+      console.log("delNames:"+delNames);
+    </script>
+  </body>
+</html>

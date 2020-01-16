@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    赞<button id="zan" onclick="zan(this)">0</button>
+    踩<button id="cai" onclick="cai(this)">0</button>
+    <script>
+      function factory(){
+        var n=0;//重用且受保护的变量
+        return function(btn){
+          btn.innerHTML=++n;
+        }
+      }
+      var zan=factory();
+      //zan:function(btn){(n=0)btn.innerHTML=++n;}
+      var cai=factory();
+      //cai:function(btn){(n=0)btn.innerHTML=++n;}
+    </script>
+  </body>
+</html>

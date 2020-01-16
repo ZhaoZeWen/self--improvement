@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vueRoad122</title>
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<div id="demo">
+		<todo-demo
+			v-for="tem in tems"
+			v-bind:just = "tem"
+			v-bind:key="tem.id">
+		</todo-demo>
+	</div>
+	<script>
+		Vue.component('todo-demo',{
+			props: ['just'],
+			// data:function(){
+			// 	return{
+			// 		counter: this.just
+			// 	}
+			// },
+			// computed:{
+			// 	props: ['size'],
+			// 	toSmall:function(){
+			// 		return this.size.trim().toLowerCase();
+			// 	}
+			// },
+			template: `
+				<div>
+					<p>{{just.title}}</p>
+					<span>{{just.id}}</span>
+				</div>
+			`
+		})
+		var vm = new Vue({
+			el:'#demo',
+			data: {
+				tems: [
+					{id:1, title:'good'},
+					{id:2, title:'nice'},
+				]
+			}
+		})
+	</script>
+</body>
+</html>

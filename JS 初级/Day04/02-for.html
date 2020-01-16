@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /*10的阶乘*/
+      function jc(){
+        var sum = 1;
+        for(var i=1;i<=10;i++){
+          sum *= i;
+        }
+        console.log("10!="+sum);
+      }
+       
+      /**
+       * 打印乘法口诀表中的任意一行
+       * 参数 line : 表示要打印的行数
+       */
+      function printNine(line){
+        /* 1*3=3 2*3=6 3*3=9 */
+        //循环条件：从1开始，到line结束 -> i
+        //循环操作：i * line = i*line
+        var msg = "";
+        for(var i=1;i<=line;i++){
+          msg += i+"*"+line+"="+i*line+"\t";
+        }
+        console.log(msg);
+      }
+        
+      /**
+       * 打印指定数列的和 
+       * 1 + 1/3 + 1/5 + ... + 1/999
+       */
+      function printSum(){
+        //1、打印 1,3,5,7,9
+        //条件：从1开始，到999结束，以2为增量递增 i
+        //操作：累加 1/i 的和
+        var sum = 0;
+        for(var i=1;i<=999;i+=2){
+          sum += 1/i;
+        }
+        console.log(sum);
+      }
+      
+      /**
+       * 判断指定的数字是否为素数
+       * 参数 n : 要判断的数字
+       */
+      function isPrim(){
+        var n = Number(prompt("Input:"));
+        //条件：从2开始，到n-1为止 -> i
+        //操作：判断 n 能否被 i 整除，如果被整除，就不是素数，否则就是素数
+        var isP = true;//声明一个变量，用来记录数字n是否为素数的结果，默认为true，意味着默认是素数
+        for(var i=2;i<n/2;i++){
+          if(n % i == 0){
+            isP = false;//已经能被整除了，所以n就不是素数了!
+            break;
+          }
+        }
+        if(isP){
+          console.log(n+"是素数");
+        }else{
+          console.log(n+"不是素数");
+        }
+      }
+      
+      /**
+       * 打印菲波那切数列的前10个数
+       */
+      function printFib(){
+        var n1 = 1;
+        var n2 = 1;
+        //操作：先打印 n1 和 n2 的值，再重新计算 n1 和 n2的值
+        //条件：共5次
+        for(var i=1;i<=5;i++){
+          console.log(n1,n2);
+          n1 = n1 + n2;
+          n2 = n1 + n2;
+        }
+      }
+    </script>
+    <button onclick="jc()">10!</button> 
+    <button onclick="printNine(5)">乘法口诀表中的任意一行</button>
+    <button onclick="printSum()">打印指定数列的和</button>
+    <button onclick="isPrim()">判断是否为素数</button>
+    <button onclick="printFib()">打印兔子</button>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <router-view></router-view>
+</div>
+
+<script>
+    var NotFound = Vue.component('not-found',{
+        template:`
+            <h1>404 page not found</h1>
+        `
+    })
+    var Login = Vue.component('my-login',{
+        methods:{
+            login:function(){
+                this.$router.push('/mail');
+            }
+        },
+        template:`
+            <div>
+                <h1>这是登录页面</h1>
+                <button @click="login">登录</button>
+            </div>
+        `
+    });
+
+    var Mail = Vue.component('my-mail',{
+        template:`
+            <div>
+                <h1>这是邮箱主页面</h1>
+                <router-link to="/inbox">收件箱</router-link>
+                <router-link to="/outbox">发件箱</router-link>
+                <router-link to="/mail/draft">草稿箱</router-link>
+                <router-view></router-view>
+            </div>
+        `
+    })
+    var Inbox = Vue.component('my-inbox',{
+        template:`
+         <ul>
+            <li>新邮件1</li>
+            <li>新邮件2</li>
+            <li>新邮件3</li>
+         </ul>
+        `
+    })
+
+    var Outbox = Vue.component('my-outbox',{
+        template:`
+         <ul>
+            <li>已发邮件1</li>
+            <li>已发邮件2</li>
+            <li>已发邮件3</li>
+         </ul>
+        `
+    })
+
+    const myRoutes = [
+        {path:'',component:Login},
+        {path:'/login',component:Login},
+        {
+            path:'/mail',
+            component:Mail,
+            children:[
+                {path:'',component:Inbox},
+                {path:'/inbox',component:Inbox},
+                {path:'/outbox',component:Outbox},
+                {path:'*',component:NotFound},
+            ]
+        },
+        {path:'*',component:NotFound}
+    ]
+
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    })
+
+    new Vue({
+        router:myRouter,
+        el: '#example',
+        data: {
+            msg: 'Hello World'
+        }
+    });
+</script>
+
+</body>
+</html>

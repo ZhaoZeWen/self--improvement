@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body><!--点按钮，报出自己是第几个-->
+    <button>click me!</button>
+    <button>click me!</button>
+    <button>click me!</button>
+    <button>click me!</button>
+    <script>
+      //var elems=document.getElementsByTagName
+                                    //按标签名
+      var btns=
+        document.getElementsByTagName("button");
+      function factory(i){//i受保护
+        //局部变量: 参数和函数内var
+        //凡是函数不确定的，都从参数传入
+        return function(){
+          alert(i+1);
+        }
+      }
+      //js中:elem.on事件名=function(){...}
+      for(var i=0;i<btns.length;i++){
+        btns[i].onclick=factory(i);
+        //函数不调用不执行，只有调用才执行!
+      }
+    </script>
+  </body>
+</html>

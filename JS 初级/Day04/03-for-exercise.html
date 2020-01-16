@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>循环的嵌套</title>
+  </head>
+  <body>
+    <script>
+      function printStar1(){
+        for(var i=1;i<=5;i++){
+          for(var j=1,str="";j<=i;j++){
+            str += "*";
+          }
+          console.log(str);
+        }
+      }
+
+      function printStar2(){
+        for(var i=1;i<=5;i++){
+          var str = "";
+          //1、控制空格的循环
+          for(var j=1;j<=5-i;j++){
+            str += " ";
+          }
+          //2、控制*的循环
+          for(var k=1;k<=i;k++){
+            str += "*";
+          }
+          console.log(str);
+        }
+      }
+
+      function printStar3(){
+        for(var i=1;i<=5;i++){
+          var str = "";
+          //1、空格的循环
+          for(var j=1;j<=5-i;j++){
+            str += " ";
+          }
+          //2、**的循环
+          for(var k=1;k<=2*i-1;k++){
+            str += "*";
+          }
+          console.log(str);
+        }
+      }
+      
+      /*乘法表*/
+      function printNine(){
+        for(var i=1;i<=9;i++){
+          for(var j=1,str="";j<=i;j++){
+            str += j+"*"+i+"="+j*i+"\t";
+          }
+          console.log(str);
+        }
+      }
+
+      function printCF(){
+        for (var i = 1; i <= 9; i++) {
+          for (var k = 1, str = ""; k <= i; k++) {
+            str += k + "*" + i +"="+k*i+"\t";
+          }
+          console.log(str);
+        }
+      }
+    </script>
+    <button onclick="printStar1()">打印**1</button>
+    <button onclick="printStar2()">打印**2</button>
+    <button onclick="printStar3()">打印**3</button>
+    <button onclick="printNine()">乘法表</button>
+    <button onclick="printCF()">乘法表</button>
+  </body>
+</html>

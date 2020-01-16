@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>通过递归实现数字 n 的阶乘</title>
+  </head>
+  <body>
+    <script>
+      function f(n){
+        //边界条件 为 1，n为1的时候，直接返回1，否则，返回 n * f(n-1)
+        if(n == 1){
+          return 1;
+        }else{
+          return n * f(n-1);
+        }
+      }
+
+      function testF(){
+        var result = f(10);
+        console.log("结果为:"+result);
+      }
+    </script>
+    <button onclick="testF()">递归</button>
+  </body>
+</html>

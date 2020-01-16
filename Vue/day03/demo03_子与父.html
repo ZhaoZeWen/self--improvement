@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <father></father>
+    <father-msg></father-msg>
+</div>
+<script>
+    Vue.component('father',{
+        data:function(){
+            return{
+                sonMsg:''
+            }
+        },
+        methods:{
+          rcvMsg:function(msg){
+              console.log("父组件接收到的数据是"+msg);
+              this.sonMsg=msg;
+          }
+        },
+       template:`
+            <div>
+                <h1>这是父组件</h1>
+                <p>{{sonMsg}}</p>
+                <hr/>
+                <son @toFatherEvent="rcvMsg"></son>
+            </div>
+       `
+    });
+    Vue.component('son',{
+        methods:{
+          sendToFather:function(){
+              this.$emit('toFatherEvent',parseInt(Math.random()*100));
+          }
+        },
+        template:`
+            <div>
+                <h1>这是子组件</h1>
+                <button @click="sendToFather">发送给父组件</button>
+            </div>`
+    });
+    Vue.component('father-msg',{
+        data: function(){
+            return {
+                msgSon:''
+            }
+        },
+        methods:{
+            rcSon:function(msg){
+                console.log("父组件接受"+ msg);
+                this.msgSon = msg;
+            }
+        },
+        template: `
+            <div>
+                <h2>父组件</h2>
+                <p>{{msgSon}}</p>
+                <son-msg @fromSon='rcSon'></son-msg>
+            </div>
+        `
+    })
+    Vue.component('son-msg',{
+        methods:{
+            toFather:function(){
+                this.$emit('fromSon',parseInt(Math.random()*100));
+            }
+        },
+        template: `
+            <div>
+                <h2>子组件</h2>
+                <button @click='toFather'>发送给父组件</button>
+            </div>
+        `
+    })
+    
+    new Vue({
+        el: "#example",
+        data: {
+            msg: "Hello World"
+        }
+    })
+</script>
+</body>
+</html>

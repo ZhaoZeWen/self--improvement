@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>判断英文，数字，汉字</title>
+  </head>
+  <body>
+    <script>
+      var input = prompt("请输入一个字符:");
+      //1、判断是否为数字
+      var isNUM = isNaN(input);
+      console.log("是数字吗?"+!isNUM);
+      //2、判断是否为英文
+      //2.1 判断是否为小写字符
+      var isSMA = input >= "a" && input <= "z";
+      //2.2 判断是否为大写字符
+      var isCAP = input >= "A" && input <= "Z";
+      var isENG = isSMA || isCAP;
+      console.log("是英文吗?"+isENG);
+      //3、判断是否为汉字
+      var isCHN = input >= "\u4e00" && input <= "\u9fa5";
+      console.log("是汉字吗?"+isCHN);
+    </script>
+  </body>
+</html>

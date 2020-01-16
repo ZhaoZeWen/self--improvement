@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <father></father>
+</div>
+<script>
+    Vue.component('father',{
+        data:function(){
+            return{
+                money:1000000000
+            }
+        },
+        template:`
+            <div>
+                <h2>这是父组件</h2>
+                <son></son>
+            </div>
+        `
+    });
+    Vue.component('son',{
+        mounted:function(){
+          //子组件在挂载完毕之后，准备读取父组件中数据
+            console.log(this.$parent.money);
+        },
+        template:`
+            <div>
+                <h1>这是子组件</h1>
+            </div>
+        `
+    });
+    new Vue({
+        el: "#example",
+        data: {
+            msg: "Hello World"
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class基本语法</title>
+    <style>
+        p::before{
+            content: 'Hi,'
+        }
+        p::after{
+            content: 'NIUBICLASS'
+        }
+        div::first-letter{
+            font-size: 50px;
+            color: red;
+        }
+        div::first-line{
+            font-size: 30px;
+            color:green;
+        }
+        div::selection{
+            color:yellow;
+        }
+        span::before{
+            content: 'Hi,'
+        }
+        span::after{
+            content: 'NIUBICLASS'
+        }
+        span::first-letter{
+            font-size: 50px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p>CSS</p>
+    <div>我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,我在学伪元素,</div>
+    <div>???我在学伪元素</div>
+    <span>伪元素</span>
+    <script>
+        // 类的由来  ES5语法
+        function Point(x,y){
+            this.x = x;
+            this.y = y;
+        }
+        Point.prototype.toString = function(){
+            return '(' + this.x + ', ' + this.y + ')';
+        }
+        var p = new Point(1,2);
+
+
+
+        // ES6语法改写上面的函数
+        class Point{
+            constructor(x,y){
+                this.x = x;
+                this.y = y;
+            }
+            toString(){
+                return '(' + this.x + ', ' + this.y + ')';
+            }
+        }
+        var p = new Point();
+        p.toString();
+
+        // constructor方法默认返回实例对象（即this），完全可以指定返回另外一个对象。
+        class Foo{
+            constructor(){
+                return Object.create(null);
+            }
+        }
+        new Foo() instanceof Foo  //false
+        // 上面代码中，constructor函数返回一个全新的对象，结果导致实例对象不是Foo类的实例。
+
+        // 取值函数（getter）和存值函数（setter）
+        // 与 ES5 一样，在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
+        class MyClass{
+            constructor(){
+                //....
+            }
+            get prop(){
+                return 'getter;'
+            }
+            set prop(value){
+                console.log('setter:'+value);
+            }
+        }
+        let inst = new MyClass();
+        inst.prop = 123;
+        //setter: 123
+        inst.prop
+        //'getter'
+        // 上面代码中，prop属性有对应的存值函数和取值函数，因此赋值和读取行为都被自定义了。
+        
+    </script>
+</body>
+</html>

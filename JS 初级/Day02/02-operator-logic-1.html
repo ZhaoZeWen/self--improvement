@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>使用逻辑运算符判断是否为闰年</title>
+  </head>
+  <body>
+    <script>
+      //1、使用 prompt 从弹框中输入数据
+      /**
+       * 如果字符串 和 数字 做算术运算的话，那么默认的会将字符串转换为 数字类型（加法除外）
+       */
+      var year = prompt("请输入一个年份:");
+      //2、判断是否为闰年，并将结果打印输出
+      /*
+        能被4整除，但不能被100整除
+        或 
+        能被400整除
+      */
+      var result = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+
+      console.log(year+"年是闰年吗?"+result);
+    </script>
+  </body>
+</html>

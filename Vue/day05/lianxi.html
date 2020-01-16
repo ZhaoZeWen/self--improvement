@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <router-view></router-view>
+</div>
+
+<script>
+    var MyCart = Vue.component('my-cart',{
+        methods:{
+            jump:function(){
+                this.$router.push('/oc/200');
+            }
+        },
+        template:`
+            <button @click="jump">去结算</button>
+        `
+    })
+
+    var MyOrderConfirm = Vue.component('my-oc',{
+        data:function(){
+            return {
+                totalPrice:0
+            }
+        },
+        mounted:function(){
+            this.totalPrice =
+                this.$route.params.price
+        },
+        template:`
+            <div>
+                <h1>这是订单确认页面</h1>
+                <h2>{{"选中的商品价格为"+totalPrice}}</h2>
+                <router-link to="/step1">第一步</router-link>
+                <router-link to="/step2">第二步</router-link>
+                <router-view></router-view>
+            </div>
+        `
+    })
+
+    var StepOne = Vue.component('my-step1',{
+        template:`<h1>订单确认的第一步</h1>`
+    })
+    var StepTwo = Vue.component('my-step2',{
+        template:`<h1>订单确认的第二步</h1>`
+    })
+
+    const myRoutes = [
+        {path:'',component:MyCart},
+        {path:'/cart',component:MyCart},
+        {
+            path:'/oc/:price',
+            component:MyOrderConfirm,
+            children:[
+                {path:'',component:StepOne},
+                {path:'/step1',component:StepOne},
+                {path:'/step2',component:StepTwo}
+            ]
+        }
+    ]
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    })
+
+    new Vue({
+        router:myRouter,
+        el: '#example',
+        data: {
+            msg: 'Hello World'
+        }
+    });
+</script>
+
+</body>
+</html>

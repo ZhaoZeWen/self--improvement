@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vueRoad121</title>
+	<style>
+		#water-wave{
+			width: 200px;
+			height: 200px;
+			border-radius: 100%;
+			border:1px solid #333333;
+			position: relative;
+			margin: auto;
+			animation: water-wave linear infinite;
+			overflow: hidden;
+		}
+		#water-wave1{
+			width: 300px;
+			height: 300px;
+			border-radius: 33%;
+			background-color: #33cfff;
+			opacity: 0.7;
+			position: absolute;
+			top: 90px;
+			left: -20px;
+			animation: inherit;
+			animation-duration: 7s;
+		}
+		#water-wave2{
+			width: 310px;
+			height: 310px;
+			border-radius: 35%;
+			background-color: #0eaffe;
+			opacity: 0.5;
+			position: absolute;
+			top: 80px;
+			left: -20px;
+			animation: inherit;
+			animation-duration: 9s;
+		}
+		#water-wave3{
+			width: 320px;
+			height: 320px;
+			border-radius: 35%;
+			background-color: #0f7ae4;
+			opacity: 0.3;
+			position: absolute;
+			top: 70px;
+			left: -20px;
+			animation: inherit;
+			animation-duration: 11s;
+		}
+		@keyframes water-wave{
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<div id="water-wave">
+		<div id="water-wave1"></div>
+		<div id="water-wave2"></div>
+		<div id="water-wave3"></div>
+	</div>
+
+	<div id="el">
+		<div :style="{fontSize: postFontSize + 'em'}">
+			<todo-index
+				v-for="item in posts" 
+				v-bind:key="item.id" 
+				v-bind:post = "item"
+				@enlarge-text="postFontSize += 0.1"
+			>
+			</todo-index>
+		</div>
+	</div>
+
+	<script>
+		Vue.component('todo-index',{
+			props : ['post'],
+			template : `<div class="todo-index">
+							<h3>{{post.title}}</h3>
+							<button @click="$emit('enlarge-text')">Enlarge text</button>
+							<div v-html="post.content"></div>
+						</div>`
+		})
+		var vm = new Vue({
+			el: '#el',
+			data: {
+				posts : [
+					{id:1,title:'new Date().toLocaleDateString()-1'},
+					{id:2,title:'new Date().toLocaleDateString()'},
+					{id:3,title:'new Date().toLocaleDateString()+1'}
+				],
+				postFontSize : 1
+			},
+		})
+	</script>
+</body>
+</html>

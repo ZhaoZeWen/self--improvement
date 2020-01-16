@@ -1,0 +1,270 @@
+1、其它元素
+	1、为控件分组
+		语法：
+			<fieldset></fieldset> : 为控件分组
+			<legend></legend> : 分组的标题
+	2、<label>元素
+		1、作用
+			关联文本和表单控件的，关联完成后，点击文本就如同点击控件一样
+		2、语法
+			<label></label>
+			属性：
+				1、for
+					指定要关联的表单控件的ID值
+	3、浮动框架
+		1、作用
+			将其他页面引入到当前页面中来
+		2、语法
+			<iframe></iframe>
+			属性：
+				1、src
+					要引入的网页的url
+				2、width
+					宽度
+				3、height
+					高度
+				4、frameborder
+					浮动框架的边框，如果不需要边框，则手动设置为0
+2、新input元素
+	1、电子邮件类型
+		<input type="email">
+	2、搜索类型
+		<input type="search">
+	3、URL类型
+		<input type="url">
+		特点：输入的数据必须符合URL的规范
+	4、电话号码类型
+		<input type="tel">
+		特点：在移动终端中，表现形式为拨号键盘。在PC机中表现形式为文本框
+	5、数字类型
+		<input type="number">
+		特点：该控件只能输入/选择数字
+		属性：
+			1、min ：接受的最小值
+			2、max ：接受的最大值
+			3、step ：选择数字时，数字的变化范围
+	6、范围类型
+		<input type="range">
+		特点：提供一个滑块，滑动选取数字
+		属性：
+			1、min ：接受的最小值
+			2、max ：接受的最大值
+			3、value ：默认值
+	7、颜色类型
+		<input type="color">
+		特点：提供一个颜色选取控件
+	8、日期类型
+		<input type="date">
+		特点：提供一个日历控件，选择年月日
+	9、周类型
+		<input type="week">
+		特点：提供一个日历控件，选择周
+	10、月份类型
+		<input type="month">
+		特点：提供一个日历控件，选择月份
+================================================
+JavaScript
+1、JavaScript 概述(了解)
+	1、什么是JavaScript
+		JavaScript，简称JS，是一种运行于Javascript解释器/引擎中的解释型脚本语言
+	2、JS的发展史
+		1、1992年，Nombas为自己的软件开发了一款脚本语言叫 CMM(C--),后来更名为ScriptEase，可以嵌入在网页中运行
+		2、1995年，Netscape(网景)在自己的Navigator2.0的浏览器中开发了另一种脚本语言LiveScript,后更名为 JavaScript
+		3、1996年，Microsoft，在IE3.0中发布了JavaScript的克隆版本，称为 JScript
+		4、1997年，ECMA(欧洲计算机制造商协会) 接收了 JavaScript 1.1 版本.Netscape将JS的核心交给了ECMA，从此JS的核心更名为 ECMAScript
+
+		完整的JS共有3个部分组成：
+		1、核心(ECMAScript)
+		2、DOM(Document Object Model)
+			文档对象模型
+			让JS有能力操作HTML文档
+		3、BOM(Browser Object Model)
+			浏览器对象模型
+			让JS有能力操作浏览器
+2、JavaScript 的使用
+	1、浏览器的内核
+		1、内容排版引擎 - 解析HTML 和 CSS
+		2、脚本解释引擎 - 解析Javascript
+	2、搭建JS运行环境
+		1、独立安装的JS解释器
+			NodeJS
+			输入：console.log("Hello World");
+			作用：在控制台上打印输出指定的内容
+		2、使用浏览器内核中的JS解释器
+			1、直接在Console中输入代码并执行
+			2、将JS脚本嵌入在HTML的页面中
+				1、在html元素事件中执行JS代码
+					<button onclick="">
+					练习：
+						1、创建一个按钮
+						2、按钮点击时 onclick,在控制台上打印输出Hello World
+				2、在<script></script>中嵌入JS脚本
+					<body>
+						<script>
+							document.write("Hello World");
+						</script>
+					</body>
+				3、在外部文件中编写JS脚本
+					1、创建 ***.js文件，并编写脚本代码
+					2、在网页中通过<script>标记引入JS文件
+						<script src="js文件的url"></script>
+	3、JS代码错误调试
+		如果一块代码有问题的话，那么就终止本块的代码执行，但不影响后续块的代码执行
+	4、JS的语法规范
+		1、语句
+			JS中可以被执行的最小单元称为语句
+			由表达式，运算符，关键字 来组成
+			注意问题：
+				1、每条语句独占一行
+				2、每条语句最终以 ; 结尾
+				3、语句是严格区分大小写
+					console.log();  正确执行
+					Console.log();  错误
+				4、所有的符号都是英文的
+					英文  中文
+					;     ；
+					"     ”
+					'     ‘
+					.     。
+					()    （）
+					[]    【】
+					{}     {}
+		2、JS中的注释
+			1、单行注释
+				//
+			2、多行注释
+				/*   */
+3、变量 和 常量
+	1、变量的声明
+		语法：
+			var 变量名;//声明
+			var 变量名=值;//声明并赋值
+			ex:
+				var uname="张三丰";
+				var uage = 18;
+				var result = 17+18;
+		注意：
+			1、如果声明变量未赋值的话，那么值默认为undefined
+			2、声明变量时，可以不加 var 关键字，但不推荐
+		同时声明多个变量：
+			var 变量名1,变量名2=值,变量名3;
+	2、变量名的命名规范
+		1、不能使用语言的关键字和保留关键字
+		2、可以包含字母，数字，_，$
+			var user_name; 正确
+			var user-name; 错误
+
+			var $uname; 正确
+			var %uname; 错误
+		3、不能以数字开头
+		4、尽量见名知意
+			var a;
+			var uname;
+			var yonghuming;
+		5、可以采用 "驼峰命名法"来命名
+			var uname;
+			var userName;
+	3、变量的使用
+		1、声明变量未赋值，值为 undefined
+		2、使用未声明过的变量，语法错误
+		3、为变量赋值 - SET操作
+			只要变量出现在赋值符号的左边一律是赋值操作
+			ex:
+				var uname="张三丰";
+				uname="张无忌";
+		4、获取变量的值 - GET操作
+			只要变量没出现在赋值符号的左边那么就一律是取值操作
+			ex：
+				var uname = "Sanfeng.Zhang";//赋值
+				console.log(uname); //取值
+				document.write(uname);//取值
+				var newName = uname;
+				//newName : 赋值操作
+				//uname : 取值操作
+
+				var num = 15;
+				num = num + 15;
+	4、常量
+		1、什么是常量
+			一经声明就不允许修改的数据称之为 常量
+		2、声明常量
+			const 常量名=值;
+			
+			注意：常量名一律采用全大写方式来声明
+4、数据类型
+	1、什么是数据类型
+		保存在变量中的数据的类型，约束了数据在内存中所占据的空间大小
+		计算机中最小的计量单位：bit(位)
+		8bit = 1byte(字节)
+		1024byte = 1KB(千字节)
+		1024KB = 1MB(兆字节)
+		1024MB = 1GB
+		1024GB = 1TB
+	2、数据类型分类
+		1、原始类型(基本类型)
+			1、number类型
+				数字类型，可以表示32位的整数或64位的浮点数
+				整数：
+					十进制 ：var num = 125;
+					八进制 ：var num = 010;
+					十六进制：var num= 0x10;
+				小数：
+					小数点计数法：var num=123.456;
+					指数计数法：var num = 3.2e3;
+			2、string类型
+				字符串类型
+				用于表示一系列的文本数据，由Unicode字符，标点，数字来组成
+
+				Unicode ：是一种字符系统，该系统下所有的字符都会有一个独一无二的字符码 - Unicode码
+				Unicode码：是一个十六进制的数字
+					"张".charCodeAt().toString(16);
+					结果：5f20
+
+					将Unicode码再转换成字符：
+					var str = "\u5f20";
+
+				中文的范围：
+					"\u4e00" ~ "\u9fa5"
+
+				JS 中的转义字符:
+					\n : 换行
+					\t : 一个制表符(Tab键的距离)
+					\" : 表示一个 "
+					\' : 表示一个 '
+					\\ : 表示一个 \
+			3、boolean类型
+				表示 真 或 假
+				仅有两个值 ：true 和 false
+				 true : 真
+				 false : 假
+				在实际运算中，true当1运算，false当0运算
+			4、undefined
+				语义：访问的数据不存在
+				场合：
+					1、声明变量未赋值
+					2、试图访问对象不存在的属性
+		2、引用类型
+
+
+作业：
+	1、声明一个变量用于表示一个圆的半径(r),计算该圆的周长和面积
+		周长 = 2 * π * 半径
+		面积 = π * r * r
+	
+		在控制台中打印输出结果格式如下：
+			半径为 * 的圆的周长为 **
+			半径为 * 的圆的面积为 **
+		如果出现精度丢失问题，则保留2位小数
+
+
+
+
+
+
+
+
+
+
+
+
+

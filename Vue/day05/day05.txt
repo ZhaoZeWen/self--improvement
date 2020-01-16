@@ -1,0 +1,95 @@
+1、针对路由模块综合练习
+	(:- 10:00)
+	练习：实现一个SPA，在这个SPA有两个组件类，cart和orderConfirm；
+	①在cart有一个按钮，点击跳转到orderConfirm，在跳转的同时发送价格为200
+	②orderConfirm接受到价格信息，显示在h2标签
+	③在orderConfirm中嵌套stepOne stepTwo，同时在orderConfirm中希望默认加载stepOne
+	  在orderCOnfirm，指定容器 router-view
+	  在orderConfirm的路由对象指定children
+
+
+2、熟悉基于命令行的开发方式
+
+	2.1 认识工程目录结构
+		assets 资源文件(img/css/js/fonts/..)
+		components 组件
+		router/index.js 完成路由词典的设置
+		App.vue 根组件
+		main.js 创建一个Vue的实例，同时指定根组件
+
+	2.2 启动的方式
+		npm start之后做的事情：
+		①通过node执行build/dev-service.js 指定开发服务器并端口8080
+		②加载index.html和main.js
+		(在main.js 通过new Vue指定router/根组件)
+		③根据路由匹配规则，从router/index.js加载路由地址为空 显示Hell.vue
+
+	2.3 如何在模板中调用创建好的.vue结尾的文件？
+	  2.3.1 全局组件
+		main.js
+		import MyHeader from '@/components/myheadder'
+		Vue.component('my-header',MyHeader)
+	  2.3.2 局部组件
+			比如myList.vue需要myHeader
+			只需要在myList.vue的script中引入对应的组件类
+			import MyHeader from '@/components/myheadder'
+
+			export default{
+			 components:{
+			   my-header:MyHeader
+			 }
+			}
+
+
+3、练习 (:-15:30)
+	基于命令行的方式来实现todolist	
+	①完成组件的创建
+	todobox.vue todolist.vue todoitem.vue todoinput.vue
+	②配置todolist todoitem todoinput作为全局组件
+	找main.js Vue.component
+	③给todobox指定路由地址
+	④实现add按钮的功能
+		步骤1：先实现数据 从todoinput到todolist
+		步骤2：在todolist中 动态创建多个todoitem,传递todoitem要显示的内容
+
+
+项目大致流程：
+	①需求分析
+	②可行性分析
+	③概要设计、详细设计
+	④编码 ui test
+	⑤联合调试 test
+	⑥上线
+	⑦迭代、维护
+
+4、搭建项目的脚手架
+
+①启动apache和mysql
+②初始化数据库
+ admin/xz.sql
+③需求分析
+login index
+index进行路由嵌套（charts/productList/userList）
+
+④修改项目的src目录
+删除项目的src目录，从ftp中的vue/day05/src_new.rar下载到本地，拷贝粘贴到项目的根目录，解压缩到当前文件夹
+
+⑤准备需要用到的文件和文件夹
+在assets目录下创建css文件夹、js文件夹，img文件夹
+将bootstrap.css、jquery.js、jquery.flot.js、图片拷贝到对应的文件夹中
+⑥创建spa中所需要用到login/index/charts/productList/userList组件类
+⑦配置路由词典
+login/index
+	--charts
+	--productList
+	--userList
+	每个组件就先显示一个h1标签。
+要求：默认加载login，在index嵌套组件，默认加载charts组件到index
+
+
+
+
+
+
+
+

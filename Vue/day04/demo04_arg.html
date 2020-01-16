@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <router-view></router-view>
+</div>
+
+<script>
+
+    var MyList = Vue.component('my-list',{
+        data:function(){
+            return {list:[100,200,300]}
+        },
+        template:`
+            <ul>
+                <li v-for="tmp in list">
+                    <router-link
+                    :to="'/detail/'+tmp">
+                        {{tmp}}
+                    </router-link>
+                </li>
+            </ul>
+        `
+    })
+
+    var MyDetail = Vue.component('my-detail',{
+        data:function(){
+            return {
+                myValue:''
+            }
+        },
+        mounted:function(){
+            //接受到通过路由传来的参数
+            console.log(this.$route.params.num);
+            console.log(this);
+            this.myValue = this.$route.params.num;
+        },
+        template:`
+            <div>
+                <h1>这是详情页</h1>
+                <p>{{myValue}}</p>
+            </div>
+        `
+    })
+
+    const myRoutes = [
+        {path:'',component:MyList},
+        {path:'/list',component:MyList},
+        {path:'/detail/:num',component:MyDetail}
+    ]
+
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    })
+
+    new Vue({
+        router:myRouter,
+        el: '#example',
+        data: {
+            msg: 'Hello World'
+        }
+    });
+</script>
+
+</body>
+</html>

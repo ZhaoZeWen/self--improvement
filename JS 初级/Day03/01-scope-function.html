@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>函数的作用域</title>
+  </head>
+  <body>
+    <script>
+      function showMsg(){
+
+        console.log("这是全局函数");
+
+        function showInfo(){
+          console.log("这是showMsg内的局部函数");  
+        }
+
+        //调用showInfo 的局部函数
+        showInfo();
+      }
+    </script>
+    <button onclick="showMsg()">函数的调用</button>
+  </body>
+</html>

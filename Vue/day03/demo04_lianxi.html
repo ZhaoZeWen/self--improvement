@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <my-chatroom></my-chatroom>
+</div>
+<script>
+    Vue.component('my-chatroom',{
+        data:function(){
+            return{
+                chatList:[]
+            }
+        },
+        methods:{
+            rcvMsg:function(msg){
+                console.log("父组件接收到的数据是"+msg);
+                this.chatList.push(msg);
+            }
+        },
+        template :`
+            <div>
+                <ul>
+                    <li v-for="tmp in chatList">{{tmp}}</li>
+                </ul>
+                <my-user @addEvent="rcvMsg" myName="lucy"></my-user>
+                <my-user @addEvent="rcvMsg" myName="michael"></my-user>
+            </div>
+        `   
+    });
+    Vue.component('my-user',{
+        props:['myName'],
+        data:function(){
+            return{
+                myMsg:''
+            }
+        },
+        methods:{
+          addToList:function(){
+              var msg=this.myName+":"+this.myMsg;
+              this.$emit('addEvent',msg);
+              this.myMsg="";
+          }
+        },
+        template:`
+            <div>
+                <label for="">{{myName}}</label>
+                <input v-model="myMsg" type="text" placeholder="plz input">
+                <button @click="addToList">发送</button>
+            </div>
+       `
+    });
+    new Vue({
+        el: "#example",
+        data: {
+            msg: "Hello World"
+        }
+    })
+</script>
+</body>
+</html>

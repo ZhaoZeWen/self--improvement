@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <router-view></router-view>
+</div>
+
+<script>
+    var NotFound = Vue.component('not-found',{
+        template:`
+         <h1>404,page not found</h1>
+        `
+    })
+
+    var MyCheck = Vue.component('check',{
+        methods:{
+            jump:function(){
+                this.$router.push('/pay/100')
+            }
+        },
+        template:`
+        <div>
+            <h1>这是商品查看页面</h1>
+            <button @click="jump">去结算</button>
+            <router-link to="/hello"> test </router-link>
+        </div>
+        `
+    });
+    var MyPay = Vue.component('pay',{
+        data:function(){
+            return {
+                totalPrice:0
+            }
+        },
+        mounted:function(){
+            console.log(this.$route.params.price);
+            this.totalPrice = this.$route.params.price;
+        },
+        methods:{
+            jump:function(){
+                this.$router.push('/send')
+            }
+        },
+        template:`
+        <div>
+            <h1>这是商品支付页面</h1>
+            <h2>{{"价格为"+totalPrice}}</h2>
+            <button @click="jump">支付完成，去发货</button>
+        </div>
+        `
+    });
+    var MySend = Vue.component('send',{
+        template:`
+        <div>
+            <h1>这是商品发货页面</h1>
+            <router-link to="/">
+                查看商品
+            </router-link>
+        </div>
+        `
+    });
+
+    const myRoutes = [
+        {path:'',component:MyCheck},
+        {path:'/check',component:MyCheck},
+        {path:'/pay/:price',component:MyPay},
+        {path:'/send',component:MySend},
+        {path:'*',component:NotFound}
+    ];
+
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    })
+
+    new Vue({
+        router:myRouter,
+        el: '#example',
+        data: {
+            msg: 'Hello World'
+        }
+    });
+</script>
+
+</body>
+</html>

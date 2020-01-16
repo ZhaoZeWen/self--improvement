@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <to-do-box></to-do-box>
+</div>
+<script>
+    Vue.component('to-do-box',{
+        template:`
+            <div>
+                <to-doInput></to-doInput>
+                <to-doList></to-doList>
+            </div>
+        `
+    });
+    Vue.component('to-doInput',{
+       template:`
+            <div>
+                <h1>待做事项列表</h1>
+                <input type="text" placeholder="请输入要做的事情"/>
+                <button>Add</button>
+            </div>
+       `
+    });
+    Vue.component('to-doList',{
+       template:`
+        <ul>
+            <to-doItem></to-doItem>
+            <to-doItem></to-doItem>
+        </ul>
+       `
+    });
+    Vue.component('to-doItem',{
+       template:`
+            <li>
+                <button>delete</button>
+                <span>code</span>
+            </li>
+       `
+    });
+    new Vue({
+        el: "#example",
+        data: {
+            msg: "Hello World"
+        }
+    })
+</script>
+</body>
+</html>

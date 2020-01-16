@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <title>Title</title>
+</head>
+<body>
+
+<div id="example">
+    <!--指定容器-->
+    <router-view></router-view>
+</div>
+
+<script>
+    //创建需要用到的组件类
+    var MyCart = Vue.component('cart',{
+        template:`
+            <div>
+                <h1>这是购物车</h1>
+                <button @click="jump()">去结算</button>
+            </div>
+        `,
+        methods:{
+            jump:function(){
+                this.$router.push('/oc/123')
+            }
+        }
+    })
+    var MyOC = Vue.component('order-confirm',{
+        data:function(){
+            return {
+                nowPrice:0
+            }
+        },
+        mounted:function(){
+            //接受通过路由传递来的参数
+            console.log(this.$route.params.price);
+            this.nowPrice = this.$route.params.price;
+
+        },
+        template:`
+            <div>
+                <h1>订单确认页面</h1>
+                <p>{{"接受到的参数为"+nowPrice}}</p>
+            </div>
+        `
+    })
+
+    //配置路由词典（路由数组）
+    const myRoutes = [
+        {path:'',component:MyCart},
+        {path:'/cart',component:MyCart},
+        {path:'/oc/:price',component:MyOC}
+    ]
+
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    })
+
+    new Vue({
+        router:myRouter,
+        el:'#example'
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <my-list></my-list>
+</div>
+
+<script>
+    // http://jsonplaceholder.typicode.com/users
+    Vue.component('my-list',{
+        methods:{
+            loadData:function(){
+                this.$http
+    .get('http://jsonplaceholder.typicode.com/users')
+    .then((result)=>{
+                    console.log(result.data);
+                })
+            }
+        },
+        template:`
+         <div>
+            <ul>
+                <li>test</li>
+            </ul>
+             <button @click="loadData">clickMe</button>
+        </div>
+        `
+    })
+
+    new Vue({
+        el: '#example',
+        data: {
+            msg: 'Hello World'
+        }
+    });
+</script>
+
+</body>
+</html>

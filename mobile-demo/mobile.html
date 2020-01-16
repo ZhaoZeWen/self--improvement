@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- meta使用viewport以确保页面可自由缩放  -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>mobile</title>
+
+	<!-- 引入 jQuery Mobile 样式 -->
+	<link rel="stylesheet" href="jquery.mobile-1.4.5.css">
+
+	<!-- 引入 jQuery 库 -->
+	<script src="jquery.js"></script>
+
+	<!-- 引入 jQuery Mobile 库 -->
+	<script src="jquery.mobile-1.4.5.js"></script>
+</head>
+<body>
+	<!-- 第一个页面 -->
+	<div data-role="page" id="pageone">
+		<div data-role="header" data-position="fixed">
+			<h1>欢迎来到我的主页</h1>
+		</div>
+		<div data-role="main" class="ui-content">
+			<a href="#pagetwo" data-transition="flip" class="ui-btn ui-btn-inline ui-shadow">跳转到第二个页面(灰色按钮默认的样式)(为按钮添加阴影)</a>
+			<a href="#pagethree" data-transition="pop" class="ui-btn ui-btn-inline ui-btn-b ui-corner-all">跳转到第三个页面(黑色按钮)(内联按钮带圆角)</a>
+			<a href="#" class="ui-btn ui-icon-info ui-btn-inline ui-btn-icon-right">信息按钮</a>
+			<a href="#" class="ui-btn ui-icon-audio ui-btn-inline ui-btn-icon-left">扬声器按钮</a>
+			<!-- 只显示图标不显示文字 -->
+			<a href="#" class="ui-btn ui-icon-lock ui-btn-inline ui-btn-icon-notext">挂锁按钮</a>
+			<!-- 只显示图标不显示文字 去掉圆圈-->
+			<a href="#" class="ui-btn ui-icon-lock ui-btn-inline ui-btn-icon-notext ui-corner-all">挂锁按钮</a>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<h1>底部文字</h1>
+		</div>
+	</div>
+	<!-- 第二个页面 以dialog形式展示-->
+	<div data-role="page" data-dialog="true" id="pagetwo">
+		<div data-role="header">
+			<h2>just do it</h2>
+		</div>
+		<div data-role="main" class="ui-content">
+			<a href="#pageone" data-transition="slide" data-direction="reverse">返回第一个页面</a>
+		</div>
+		<div data-role="footer">
+			<h2>this is a dialog demo</h2>
+			<!-- 按钮样式1 -->
+			<button class="ui-btn">按钮1</button>
+			<!-- 按钮样式2 -->
+			<input type="button" value="按钮2">
+			<!-- 按钮样式3 -->
+			<a href="#" class="ui-btn">按钮3</a>
+		</div>
+	</div>
+	<!-- 第三个页面 -->
+	<div data-role="page" id="pagethree">
+		<div data-role="header">
+			<h1>头部</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist">首页</a></li>
+					<li><a href="#pagefour" data-icon="arrow-r">页面二</a></li>
+					<li><a href="#" data-icon="search">搜索</a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="main" class="ui-tontent">
+			<h4>第三个页面</h4>
+			<div data-role="controlgroup" data-type="horizontal">
+				<p>水平组合按钮</p>
+				<a href="#" data-role="button">按钮1</a>
+				<a href="#" data-role="button">按钮2</a>
+				<a href="#" data-role="button">按钮3</a>
+			</div>
+			<div data-role="controlgroup" data-type="vertical">
+				<p>垂直组合按钮(默认)</p>
+				<a href="#" data-role="button">按钮1</a>
+				<a href="#" data-role="button">按钮2</a>
+				<a href="#" data-role="button">按钮3</a>
+			</div>
+			<!-- 后退按钮 （这会忽略锚的 href 值）返回 -->
+			<div>
+				<a href="#" data-role="button" data-rel="back">返回</a>
+			</div>
+		</div>
+		<div data-role="footer">
+			<h1>底部</h1>
+		</div>
+	</div>
+
+	<!-- 导航栏切换页面 -->
+	<div data-role="page" id="pagefour">
+		<div data-role="header">
+			<h1>欢迎来到我的首页</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#pagethree" data-icon="home">首页</a></li>
+					<li><a href="#" data-icon="arrow-r" class="ui-btn-active ui-state-persist">页面二</a></li>
+					<li><a href="#" data-icon="search">搜索</a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="main">
+			<h1>中部文字</h1>
+		</div>
+		<div data-role="footer">
+			<h2>底部文字</h2>
+		</div>
+	</div>
+</body>
+</html>

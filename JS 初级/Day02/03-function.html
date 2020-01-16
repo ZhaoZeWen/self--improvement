@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /*
+        1、创建一个函数 calculate
+        2、在函数体中
+          1、分两次从弹框中录入两个数字
+          2、计算两个数的和，并打印在控制台上
+        3、页面上，创建一个按钮"计算器"，单击时调用calculate
+      */
+      function calculate(){
+        var a = Number(prompt("请输入一个数字："));
+        var b = Number(prompt("请输入一个数字："));
+        var sum = a + b;
+        console.log("两个数字的和为:"+sum);
+      }
+
+      /*
+        定义一个函数，接收两个数字做参数，在函数体内，计算两个数字的和，并打印输出
+      */
+      function calSum(a,b){
+        //1、计算 数字a 和 数字b的和
+        var sum = a + b;
+        //2、打印输出 和
+        console.log(sum);
+      }
+    </script>
+    <button onclick="calculate()">计算器</button>
+    <button onclick="calSum(35,72)">计算两个数字的和</button>
+  </body>
+</html>

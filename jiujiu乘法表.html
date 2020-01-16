@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="九九乘法表打印在此处" style="width: 200px;height: 50px;background: #faf" onclick="JiuJiu()">
+    <input type="button" value="九九乘法表打印在控制台" style="width: 200px;height: 50px;background: #aff"
+        onclick="JiuJiuControl()">
+</body>
+<script>
+    // 打印在浏览器屏幕处
+    function JiuJiu() {
+        for (var i = 1; i <= 9; i++) {
+            document.write("<br>");
+            var x = "";
+            for (var j = 1; j <= i; j++) {
+                sum = i * j;
+                x += (i + "*" + j + "=" + i * j + "&nbsp;&nbsp;&nbsp;&nbsp;");
+            }
+            document.write(x);
+        }
+    }
+
+    // 打印在控制台处
+    function JiuJiuControl() {
+        for (var i = 1; i <= 9; i++) {
+            var x = "";
+            for (var j = 1; j <= i; j++) {
+                var sum = i * j;
+                x += i + "*" + j + "=" + sum + " ";
+            }
+            console.log(x);
+        }
+    }
+
+    function dosun() {
+        for (var i = 1; i <= 9; i++) {
+            var x = "";
+            for (var j = 1; j <= i; j++) {
+                x += i + "*" + j + "=" + i * j + " ";
+            }
+            console.log(x);
+        }
+    }
+</script>
+<script>
+    //修改目录树右侧可以改变大小
+    var dragMinWidth = 300;
+    var n = 0;
+
+    function resize(oParent, handle, isLeft, isTop, lockX, lockY) {
+        handle.onmousedown = function (event) {
+            var event = event || window.event;
+            var disX = event.clientX - handle.offsetLeft;
+            var disY = event.clientY - handle.offsetTop;
+
+            var iParentTop = oParent.offsetTop;
+            var iParentLeft = oParent.offsetLeft;
+            var iParentWidth = oParent.offsetWidth;
+            var iParentHeight = oParent.offsetHeight;
+            var rightDrag = false;
+            document.onmousemove = function (event) {
+                rightDrag = true;
+                var event = event || window.event;
+                var iL = event.clientX - disX;
+                var iT = event.clientY - disY;
+                var maxW = document.documentElement.clientWidth - oParent.offsetLeft - 2;
+                var maxH = document.documentElement.clientHeight - oParent.offsetTop - 2;
+                var iW = isLeft ? iParentWidth - iL :
+
+                    handle.offsetWidth + iL;
+                var iH = isTop ? iParentHeight - iT : handle.offsetHeight + iT;
+                isLeft && (oParent.style.left = iParentLeft + iL + "px");
+                isTop && (oParent.style.top = iParentTop + iT + "px");
+                iW < dragMinWidth && (iW = dragMinWidth);
+                iW > maxW && (iW = maxW);
+                lockX || (oParent.style.width = iW + "px");
+                iH > maxH && (iH = maxH);
+                lockY || (oParent.style.height = iH + "px");
+
+                return false;
+            };
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+
+                if (rightDrag) {
+                    var oBtn = document.getElementById('btn_switch');
+                    var oTree = document.getElementById('model-tree');
+                    n = 0;
+                    oTree.style.width = '93%';
+                    oBtn.style.backgroundImage = "url('/img/openFile/sj.png')";
+                }
+            };
+            return false;
+        }
+    };
+    window.onload = window.onresize = function () {
+        var oDrag = document.getElementById("tree");
+        var oR = document.getElementById("resizeR");
+        resize(oDrag, oR, false, false, false, true);
+    }
+</script>
+
+</html>

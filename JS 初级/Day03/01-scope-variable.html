@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>作用域中的变量</title>
+  </head>
+  <body>
+    <script>
+
+      var uname = "SuperMan"; //全局变量
+
+      function test1(){
+        // num 为局部变量，只在 test1() 中有效
+        var num = 10;
+        console.log(num);
+        console.log("全局变量:"+uname);
+        //声明变量不使用var关键字
+        msg = "天涯何处无芳草"; //是全局变量，但不推荐
+        console.log("全局变量:"+msg);
+      }
+
+      function test2(){
+        //console.log(num);
+        console.log("全局变量:"+uname);
+        console.log("全局变量:"+msg);
+      }
+
+      function showNum1(){
+        console.log(num);
+				console.log("以下是要声明的内容:");
+				var num = 1888;
+				console.log(num);
+      }
+    </script>
+    <button onclick="test1()">test1()</button>
+    <button onclick="test2()">test2()</button>
+    <button onclick="showNum1()">面试题1</button>
+  </body>
+</html>

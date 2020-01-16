@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 作业1 ：定义一个可以接收两个数字的函数，计算和，并返回
+       */
+       function calSum(a,b){
+        return a + b;
+       }
+
+       function testCalSum(){
+        //调用 calSum函数，并传递参数以及接收返回值
+        var result = calSum(78,25);
+        console.log("和为:"+result);
+       }
+
+       /**
+        * 作业2：定义一个可以接收三个数字的函数，在函数体内返回三个数中最大的数字
+        */
+       function getMax(a,b,c){
+        //步骤1：声明变量max，并将第一个数字赋值给max 
+        var max = a;
+        //步骤2：比较 max 与 b 之间的大小，如果 b>max,则将b的值赋值给max
+        max=b>max?b:max;
+        //步骤3：比较 max 与 c 之间的大小，如果 c>max,则将c的值赋值给max
+        c>max && (max=c);
+        //步骤4：将最大值 max 进行返回
+        return max;
+       }
+
+       function testGetMax(){
+        var result = getMax(357,69,112);
+        console.log("最大值为:"+result);
+       }
+
+       /**
+        *作业3：定义一个可以接收三个数字的函数，在函数体内实现三个数字的排序输出(最大的数保存给第一个参数，其次保存给第二个参数，最小的数保存给第三个参数，并打印输出三个变量的值)
+        */
+       function sortNum(a,b,c){
+        //1、比较 a 和 b的大小关系，如果 a<b，交换
+        a<b && (a^=b,b^=a,a^=b);
+        //2、比较 b 和 c的大小关系，如果 b<c，交换
+        b<c && (b^=c,c^=b,b^=c);
+        //3、比较 a 和 b的大小关系，如果 a<b，交换
+        a<b && (a^=b,b^=a,a^=b);
+
+        console.log(a,b,c);
+       }
+
+    </script>
+    <button onclick="testCalSum()">测试计算器</button>
+    <button onclick="testGetMax()">获取最大值</button>
+    <button onclick="sortNum(78,620,1290)">三个数字排序输出</button>
+  </body>
+</html>

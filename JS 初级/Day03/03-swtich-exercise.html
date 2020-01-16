@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function calDate(){
+        var year = Number(prompt("Year:"));
+        var month = Number(prompt("Month:"));
+        var day = Number(prompt("Day:"));
+        //判断year是否为闰年，并保存在 isRun 中
+        var isRun = year%4==0&&year%100!=0||year%400==0;
+        //声明totalDays来累加天数
+        var totalDays = 0;
+        /*从当前月之前的一个开始，到一月结束，天数累加*/
+        switch(month-1){
+          case 11:
+            totalDays += 30;
+          case 10:
+            totalDays += 31;
+          case 9:
+            totalDays += 30;
+          case 8:
+            totalDays += 31;
+          case 7:
+            totalDays += 31;
+          case 6:
+            totalDays += 30;
+          case 5:
+            totalDays += 31;
+          case 4:
+            totalDays += 30;
+          case 3:
+            totalDays += 31;
+          case 2:
+            totalDays += 28;
+            if(isRun){
+              totalDays += 1;
+            }
+          case 1:
+            totalDays += 31;
+        }
+        totalDays += day;
+        console.log(year+"年"+month+"月"+day+"日是"+year+"年的第"+totalDays+"天");
+      }
+    </script>
+    <button onclick="calDate()">日期计算器</button>
+  </body>
+</html>

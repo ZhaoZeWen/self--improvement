@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 清除浮动方法：
+        * 1：clear清除浮动（添加空div法）在浮动元素下方添加空div,并给该元素写css样式：{clear:both;height:0;overflow:hidden;}
+        * 2：给浮动元素父级设置高度
+        * 3：父级同时浮动（需要给父级同级元素添加浮动）
+        * 4：父级设置成inline-block，其margin: 0 auto居中方式失效
+        * 5：给父级添加overflow:hidden 清除浮动方法
+        * 6：万能清除法 after伪类 清浮动（现在主流方法，推荐使用） */
+        .father{
+            width: 100px;
+            
+            /* height: 100px;           方法2 */
+
+            /* float: left;             方法3 */
+
+            /* display: inline-block;   方法4 */
+
+            /* overflow: hidden;        方法5 */
+            background-color: aqua;
+        }
+        /* 万能清除法 after伪类 清浮动 */
+        .father::after{
+            content:".";
+            clear: both;
+            display: block;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+        }
+        .son{
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+        }
+
+        /* 创建三角形 */
+        .triangle{
+            width: 0;
+            height: 0;
+            border-top: 40px solid transparent;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 40px solid #faf;
+        }
+
+        /* 实现0.5px细线 */
+        .line{
+            position: relative;
+        }
+        .line::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 1px;
+            background-color: black;
+            transform: scaleY(.5);
+            -webkit-transform: scaleY(.5);
+            -o-transform: scaleY(.5);
+            -moz-transform: scaleY(.5);
+            -ms-transform: scaleY(.5);
+        }
+        .line-two{
+            margin: 10px 30%;
+            width: 50%;
+            border: 1px solid black;
+        }
+
+        /* 中间自适应，两边固定 */
+        /* flex方式 */
+        .box{
+            display: flex;
+            justify-content: center;
+            height: 200px;
+        }
+        .left{
+            width: 200px;
+            height: 100%;
+            background-color: bisque;
+        }
+        .right{
+            width: 100px;
+            background-color: turquoise;
+        }
+        .content{
+            background-color: #faafff;
+            flex: 1;
+        }
+        /* 绝对定位方式 */
+        .box{
+            position: relative;
+            height: 200px;
+        }
+        .left{
+            position: absolute;
+            width: 200px;
+            height: 100%;
+            background-color: red;
+            left: 0;
+        }
+        .right{
+            position: absolute;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background-color: yellow;
+        }
+        .content{
+            background-color: green;
+            height: 100%;
+            left: 200px;
+            right: 200px;
+            position: absolute;
+        }
+        /* 浮动定位实现 */
+        .box{
+            height: 200px;
+        }
+        .left{
+            width: 200px;
+            height: 100%;
+            float: left;
+            background-color: green;
+        }
+        .right{
+            width: 200px;
+            height: 100%;
+            float: right;
+            background-color: yellowgreen;
+        }
+        .content{
+            height: 100%;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div>
+        <span class="triangle"></span>
+        <div class="line"></div>
+        <div class="line-two"></div>
+    </div>
+    <div class="box">
+        <div class="left"></div>
+        <div class="content"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>

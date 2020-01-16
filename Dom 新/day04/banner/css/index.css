@@ -1,0 +1,45 @@
+.box{position:absolute; width:1000px; height:403px;}
+.box>div{
+	width:100px; height:403px;
+	position:absolute; top:0;
+	background-image:url(../imgs/1.jpg)
+}
+.box>div:nth-child(3){
+	left:100px; background-position:-100px 0;
+}
+.box>div:nth-child(4){
+	left:200px; background-position:-200px 0;
+}
+.box>div:nth-child(5){
+	left:300px; background-position:-300px 0;
+}
+.box>div:nth-child(6){
+	left:400px; background-position:-400px 0;
+}
+.box>div:nth-child(7){
+	left:500px; background-position:-500px 0;
+}
+.box>div:nth-child(8){
+	left:600px; background-position:-600px 0;
+}
+.box>div:nth-child(9){
+	left:700px; background-position:-700px 0;
+}
+.box>div:nth-child(10){
+	left:800px; background-position:-800px 0;
+}
+.box>div:nth-child(11){
+	left:900px; background-position:-900px 0;
+}
+@keyframes shake{
+	0%{ top:0px }
+	25%{ top:-100px }
+	50%{ top:70px }
+	65%{ top:-50px }
+	80%{ top:25px }
+	90%{ top:-10px }
+	100%{ top:0px }
+}
+.box>div.shake{
+	animation: shake .5s linear;
+}

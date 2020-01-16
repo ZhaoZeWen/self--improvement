@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>数组</title>
+  </head>
+  <body>
+    <script>
+      var names = ["范冰冰","李晨","李文"];
+      var ages = [40,40,45];
+      var genders = new Array("女","男","女");
+
+      //循环遍历names数组中的每个元素，并打印输出
+      for(var i=0;i<names.length;i++){
+        console.log(i+":"+names[i]);
+      }
+      //向数组后增加一个数据 ：西门庆
+      names[names.length] = "西门庆";
+      console.log(names);
+    </script>
+  </body>
+</html>

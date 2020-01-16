@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function sortInfos(){
+        var nums = [78,165,92,8,34,13];
+        console.log("排序前:"+nums);
+        //通过 sort 函数进行排序
+        nums.sort();
+        console.log("排序后:"+nums);
+      }
+
+      function sortNums(){
+        var nums = [78,165,92,8,34,13];
+        console.log("排序前:"+nums);
+        nums.sort(sortAsc);
+        console.log("排序后:"+nums);
+      }
+      
+      /**排序函数 升序*/
+      function sortAsc(a,b){
+        return a-b;
+      }
+      /**
+       * 使用匿名函数完成排序规则的指定
+       */
+      function sortNumsDesc(){
+        var nums = [78,165,92,8,34,13];
+        console.log("排序前:"+nums);
+        nums.sort(function(a,b){
+          return b-a;
+        });
+        console.log("排序后:"+nums);
+      }
+    </script>
+    <button onclick="sortInfos()">默认排序</button>
+    <button onclick="sortNumsDesc()">自定义排序</button>
+  </body>
+</html>

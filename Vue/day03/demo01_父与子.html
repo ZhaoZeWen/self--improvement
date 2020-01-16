@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <p>{{msg}}</p>
+    <my-cart></my-cart>
+</div>
+<script>
+    //my-header
+    Vue.component('my-header',{
+       props:['myTitle'],
+       template:`
+            <h2>{{myTitle}}</h2>
+
+       `
+    });
+    //my-cart
+    Vue.component('my-cart',{
+       template:`
+            <div>
+                <my-header myTitle="购物车"></my-header>
+                <ul>
+                    <li>购物车商品1</li>
+                    <li>购物车商品2</li>
+                    <li>购物车商品3</li>
+                </ul>
+            </div>
+       `
+    });
+    new Vue({
+        el: "#example",
+        data: {
+            msg: "Hello World"
+        }
+    })
+</script>
+</body>
+</html>

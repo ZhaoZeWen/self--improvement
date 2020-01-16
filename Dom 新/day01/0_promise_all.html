@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style></style>
+ </head>
+ <body>
+  <script>
+function racer1(){
+	return new Promise(fn=>{
+		console.log("1号运动员起跑!");
+		setTimeout(
+			()=>{console.log("1号运动员到达终点!");fn()},
+			4000
+		);
+	})
+}
+function racer2(){
+	return new Promise(fn=>{
+		console.log("2号运动员起跑!");
+		setTimeout(
+			()=>{
+				console.log("2号运动员到达终点!")
+				fn();
+			},
+			6000
+		);
+	})
+}
+function racer3(){
+	return new Promise(fn=>{
+		console.log("3号运动员起跑!");
+		setTimeout(
+			()=>{
+				console.log("3号运动员到达终点!")
+				fn();
+			},
+			2000
+		);
+	})
+}
+Promise.all([
+	racer1(),
+	racer2(),
+	racer3()
+]).then(()=>console.log("比赛结束！"))
+	</script>
+ </body>
+</html>

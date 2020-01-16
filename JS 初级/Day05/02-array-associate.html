@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>关联数组</title>
+  </head>
+  <body>
+    <script>
+      var array = ["金毛狮王","青翼蝠王","白眉鹰王","紫衫龙王"];
+      array["西游记"] = "古代神话故事";
+      array["红楼梦"] = "古代爱情故事";
+      array["水浒传"] = ["宋江","阎婆惜","李师师"];
+      //打印该数组中的元素个数
+      console.log("array中共有:"+array.length+"个元素");
+      //获取 array 中的 第1个元素
+      console.log(array[0]);
+      //获取下标为 红楼梦的元素 
+      console.log(array["红楼梦"]);
+      //使用 for...in循环遍历 array 中的所有内容
+      console.log("使用for...in循环遍历:");
+      for(var i in array){
+        console.log(array[i]);
+      }
+    </script>
+  </body>
+</html>

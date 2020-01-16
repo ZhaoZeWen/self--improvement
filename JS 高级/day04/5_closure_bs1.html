@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function fun(){
+        var n=999;
+        nAdd=function(){n++};//强行给未声明的变量赋值，会自动在全局创建该变量
+        return function(){
+          console.log(n);
+        }
+      }
+      var get=fun();
+      //get:function(){ console.log(n); }
+      get();//999
+      nAdd();
+      get();//1000
+    </script>
+  </body>
+</html>

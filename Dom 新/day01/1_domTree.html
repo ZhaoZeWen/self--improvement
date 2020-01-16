@@ -1,0 +1,27 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>DOM Tree</title>
+<meta charset="utf-8" />
+</head>
+<body>
+	<span id="s1">Hello</span>
+	<h1>标题一</h1>
+	<script>
+		window.onload=function(){
+			var body=document.body;
+			console.log(body);
+			var span=body.firstElementChild;
+			console.log(span);
+			var script=body.lastElementChild;
+			console.log(script);
+			var children=body.children;
+			for(var i=0,len=children.length;i<len;i++){
+				console.log(children[i].nodeName);
+			}
+			var h1=span.nextElementSibling;
+			console.log(h1);
+		}
+	</script>
+</body>
+</html>

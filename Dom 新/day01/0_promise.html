@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style></style>
+ </head>
+ <body>
+  <script>
+		function conn(){
+			            //.then()
+			return new Promise((fn,err)=>{
+				console.log("开始连接...");
+				setTimeout(()=>{
+					if(Math.random()>0.5){
+						console.log("连接成功!");
+						fn();
+					}else{
+						err("连接失败!");
+					}
+				},3000)
+			})
+		}//return Promise
+		function query(){
+			             //.then() .catch()
+			return new Promise((fn,  err)=>{
+				console.log("开始查询...");
+				setTimeout(()=>{
+					if(Math.random()>0.5){
+						console.log("查询完成!");
+						fn()
+					}else{
+						err("查询出错!")
+					}
+				},3000)
+			})
+		}
+		function response(){
+			return new Promise((fn,err)=>{
+				console.log("开始返回响应...");
+				setTimeout(()=>{
+					if(Math.random()>0.5){
+						console.log("响应完成!");
+						fn();
+					}else err("响应出错!");
+				},3000)
+			})
+		}
+		function show(){
+			console.log("开始渲染界面...");
+			setTimeout(
+				()=>console.log("界面渲染完成!"),3000)
+		}
+		function errHandler(msg){ alert(msg); }
+		conn()//return Promise(fn)
+		.then(query)//return Promise(fn)
+		.then(response)//return Promise(fn)
+		.then(show)
+		.catch(errHandler)
+	</script>	
+ </body>
+</html>

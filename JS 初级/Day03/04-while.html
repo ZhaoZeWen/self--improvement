@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 打印 1-100 之间所有的数字
+       */
+      function printNum(){
+        //循环条件：从 1 开始 ，到 100 结束
+        var i=1;
+        while(i<=100){
+          //循环操作：打印 循环条件，更新循环条件
+          console.log(i);
+          i++;
+        }
+      }
+      
+      /**
+       * 计算 1-100之间所有数字的和
+       */
+      function calSum(){
+        var i=1;
+        var sum = 0;
+        while(i <= 100){
+          sum += i;
+          i++;
+        }
+        console.log("1-100之间所有的数字和为:"+sum);
+      }
+
+      function printMsg(){
+        while(true){
+          //1、循环从弹框中录入数据
+          var input = prompt("请输入一个数据:");
+          //2、如果输入的是 exit 则退出循环结构
+          if(input == "exit"){
+            break;
+          }
+          console.log(input);
+        }
+      }
+    </script>
+    <button onclick="printNum()">打印1-100之间所有的数字</button>
+    <button onclick="calSum()">打印1-100之间所有数字的和</button>
+    <button onclick="printMsg()">循环录入数据</button>
+  </body>
+</html>

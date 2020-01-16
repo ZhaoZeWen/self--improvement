@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <xiong-er></xiong-er>
+    <xiong-da></xiong-da>
+</div>
+<script>
+    //创建bus
+    var bus=new Vue();
+
+    //需求： xiong-da（触发） ---> xiong-er(绑定)
+
+
+    Vue.component('xiong-er',{
+        beforeCreate:function(){
+          bus.$on('notifyErEvent',function(msg){
+              console.log('熊二接收到消息了！'+msg)
+          });
+        },
+        methods:{
+            replay:function(){
+                bus.$emit('notifyDaEvent','知道了!')
+            }
+        },
+        template:`
+            <div>
+                <h3>这是熊二</h3>
+                <button @click="replay">回复熊大</button>
+            </div>
+        `
+    });
+    Vue.component('xiong-da',{
+        beforeCreate:function(){
+          bus.$on('notifyDaEvent',function(msg){
+              console.log('熊大接收到的数据为：'+msg)
+          });
+        },
+        methods:{
+          sendToXiongEr:function(){
+              bus.$emit('notifyErEvent','光头强来了')
+          }
+        },
+        template:`
+            <div>
+                <h1>这是熊大</h1>
+                <button @click="sendToXiongEr">通知熊二</button>
+            </div>
+        `
+    });
+    new Vue({
+        el: "#example",
+        data: {
+            msg: "Hello World"
+        }
+    })
+</script>
+</body>
+</html>

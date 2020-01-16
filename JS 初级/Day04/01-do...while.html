@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function testInput(){
+        //1、输入数据(循环内)
+        //2、打印输出(循环内)
+        //3、条件判断(循环条件)
+        do{
+          var input = prompt("请输入数据:");
+          console.log(input);
+        }while(input != "exit");
+      }
+      
+      /**
+       * 猜数字游戏
+       */
+      function guess(){
+        //1、生成一个 1-100 之间的随机数
+        /*
+          2、在循环中完成 - 猜数字，做比较，给提示
+            2.1 让用户输入一个数据
+            2.2 判断输入的是否为 exit，并提示退出
+            2.3 如果不是 exit 则继续
+              2.3.1 如果输入的数据大于随机数，大了
+              2.3.2 如果输入的数据小于随机数，小了
+              2.3.3 否则 提示正确
+            2.4 循环条件 
+              2.4.1 用户没猜对时，继续游戏
+              2.4.2 用户输入的不是 exit，继续游戏
+        */
+
+        //1、生成一个 1-100 之间的随机数
+        var r = parseInt(Math.random()*100)+1;
+        //console.log("随机数为:"+r);
+        //2、在循环中完成 - 猜数字，做比较，给提示
+        do{
+          //2.1 让用户输入一个数据
+          var input=prompt("输入一个数据(exit退出):");
+          //2.2 判断输入的是否为 exit，并提示退出
+          if(input == "exit"){
+            alert("拜拜了!下次别来了!!!");
+          }else{
+            //2.3 如果不是 exit 则继续
+            //2.3.1 如果输入的数据大于随机数，大了
+            if(input>r){
+              alert("您猜大了!");
+            }else if(input<r){
+              //2.3.2 如果输入的数据小于随机数,小了
+              alert("您猜小了!");
+            }else{
+              //2.3.3 否则 提示正确
+              alert("恭喜您，猜对了!");
+            }
+          }
+          /*2.4 循环条件 
+          2.4.1 用户没猜对时，继续游戏
+          2.4.2 用户输入的不是 exit，继续游戏*/
+        }while(input != r && input != "exit");
+      }
+    </script>
+    <button onclick="testInput()">循环录入数据</button>
+    <button onclick="guess()">猜数字游戏</button>
+  </body>
+</html>

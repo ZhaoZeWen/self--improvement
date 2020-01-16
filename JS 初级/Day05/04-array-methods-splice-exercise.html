@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function changeCountry(){
+        var sel = ["中国","美国","日本","韩国"];
+        var unsel=["朝鲜","老挝","柬埔寨"];
+        console.log("入选国家:"+sel);
+        console.log("备选国家:"+unsel);
+        //1、输入一个国家
+        var input = prompt("输入一个国家:");
+        //2、判断该国家是否出现在unsel中，如果出现记录下标
+        var index = -1;
+        for(var i=0;i<unsel.length;i++){
+          if(unsel[i] == input){
+            index = i;
+            break;
+          }
+        }
+        //3、根据 index 给出提示或者做国家的移动
+        if(index < 0){
+          console.log("您输入的国家不存在!");
+        }else{
+          //从 unsel 中将下标为index的元素删除出去
+          unsel.splice(index,1);
+          //再将被删除的元素增加到sel的末尾处
+          sel=sel.concat(input);
+          console.log("入选国家:"+sel);
+          console.log("备选国家:"+unsel);
+
+        }
+      }
+    </script>
+    <button onclick="changeCountry()">测试splice</button>
+  </body>
+</html>

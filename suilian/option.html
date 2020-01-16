@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>option-selecte</title>
+</head>
+<body>
+	<form action="">
+		<select name="detailsMessage" id="" onchange="showDetails(this.value)">
+			<option value="abc">123456</option>
+			<option value="cba">234567</option>
+			<option value="efg">234567</option>
+			<option value="gfe">234567</option>
+			<option value="xyz">234567</option>
+			<option value="zyx">234567</option>
+		</select>
+	</form>
+	<br>
+	<div id="showMessage">
+		<span>信息显示在此处...</span>
+	</div>
+
+	<script>
+		function showDetails(details){
+			var xmlhttp;
+			if(details == ""){
+				document.getElementById("showMessage").innerHTML = "";
+				return;
+			}
+			if(window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("showMessage").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET","/try/ajax/getcustormer.php?q="+details,true);
+			xmlhttp.send();
+		}
+	</script>
+</body>
+</html>

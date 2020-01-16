@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <p>{{msg}}</p>
+    <my-login></my-login>
+    
+</div>
+<script>
+    Vue.component('my-input',{
+        props:['lableName','lableId'],
+        template:``
+    })
+    Vue.component('my-input',{
+        props:['labelName','myId'],
+        template:`
+            <div>
+                <label :for="myId">{{labelName}}</label>
+                <input type="text" :id="myId">
+            </div>
+        `
+    });
+    Vue.component('my-button',{
+        props:['btnName'],
+        template:`
+                <button>{{btnName}}</button>
+        `
+    });
+    Vue.component('my-login',{
+       template:`
+            <form>
+                <my-input labelName="用户名" myId="uname"></my-input>
+                <my-input labelName="密码" myId="upwd"></my-input>
+                <my-button btnName="登录"></my-button>
+                <my-button btnName="注册"></my-button>
+            </form>
+       `
+    });
+    new Vue({
+        el: "#example",
+        data: {
+            msg: "Hello World"
+        }
+    })
+</script>
+</body>
+</html>

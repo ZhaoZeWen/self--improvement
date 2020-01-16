@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var str = "张";
+      //将 str 转换为 Unicode码
+      var result=str.charCodeAt().toString(16);
+      console.log(str+"的Unicode码为:"+result);
+    </script>
+
+    <script>
+      var uni = "\u5f38";//将Unicode码5f38转换成对应的字符，再保存在uni变量中
+      console.log("5f38对应的字符为:"+uni);
+    </script>
+
+    <script>
+      var msg = "欢迎来到\n\"王者荣耀\"";
+      console.log(msg);
+    </script>
+  </body>
+</html>

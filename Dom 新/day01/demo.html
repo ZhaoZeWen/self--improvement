@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            border:5px solid red;   
+            width:500px;
+            text-align:center; 
+            border-collapse: collapse;
+        }
+        td,th{
+            border:1px solid #000;
+        }
+        tfoot td:first-child{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>小计</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ipone6</td>
+                <td>4444</td>
+                <td>
+                    <button>-</button>
+                    <span>1</span> 
+                    <button>+</button>
+                </td>
+                <td>¥5288.00</td>
+            </tr>
+            <tr>
+                <td>ipone6</td>
+                <td>4444</td>
+                <td>
+                    <button>-</button>
+                    <span>1</span> 
+                    <button>+</button>
+                </td>
+                <td>¥5288.00</td>
+            </tr>
+            <tr>
+                <td>ipone6</td>
+                <td>4444</td>
+                <td>
+                    <button>-</button>
+                    <span>1</span> 
+                    <button>+</button>
+                </td>
+                <td>¥5288.00</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">total</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
